@@ -1,0 +1,49 @@
+{
+  "rules": [
+    {
+      "name": "Dosya Organizasyonu",
+      "patterns": [
+        {
+          "description": "React bileşenleri .tsx uzantılı olmalıdır",
+          "pattern": "^.*\\.tsx$",
+          "message": "React bileşenleri için .tsx uzantısı kullanın"
+        },
+        {
+          "description": "Stil dosyaları",
+          "pattern": "^.*\\.css$",
+          "message": "Global stiller için index.css, modül stiller için .module.css kullanın"
+        }
+      ]
+    },
+    {
+      "name": "Kod Formatı",
+      "patterns": [
+        {
+          "description": "TypeScript tip tanımlamaları",
+          "pattern": "interface|type|enum",
+          "message": "Tip tanımlamaları için interface, type veya enum kullanın"
+        },
+        {
+          "description": "React Hook kuralları",
+          "pattern": "use[A-Z]",
+          "message": "Hook isimleri 'use' ile başlamalıdır"
+        }
+      ]
+    },
+    {
+      "name": "İsimlendirme Kuralları",
+      "patterns": [
+        {
+          "description": "Bileşen isimleri",
+          "pattern": "^[A-Z][A-Za-z]*\\.(tsx|ts)$",
+          "message": "Bileşen isimleri PascalCase olmalıdır"
+        },
+        {
+          "description": "Yardımcı fonksiyon dosyaları",
+          "pattern": "^[a-z][a-zA-Z]*\\.(ts|js)$",
+          "message": "Yardımcı fonksiyon dosyaları camelCase olmalıdır"
+        }
+      ]
+    }
+  ]
+} 
