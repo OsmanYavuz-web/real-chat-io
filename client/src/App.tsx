@@ -1,6 +1,7 @@
 import React, { useState, useEffect, FormEvent, useRef, useCallback } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { PaperAirplaneIcon, UserCircleIcon, UsersIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/solid';
+import { sanitizeInput } from './utils/sanitize';
 
 interface Message {
   username: string;
@@ -149,8 +150,8 @@ const App: React.FC = () => {
     const trimmedMessage = messageInput.trim();
     if (trimmedMessage && socket && username) {
       socket.emit('chat message', {
-        username,
-        message: trimmedMessage
+        username: sanitizeInput(username),
+        message: sanitizeInput(trimmedMessage)
       });
       setMessageInput('');
     }

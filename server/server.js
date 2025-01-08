@@ -5,6 +5,8 @@ const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const Session = require('./models/Session');
 const Message = require('./models/Message');
+const helmet = require('helmet');
+const cors = require('cors');
 
 const app = express();
 const httpServer = createServer(app);
@@ -14,6 +16,12 @@ const io = new Server(httpServer, {
     methods: process.env.CORS_METHODS.split(',')
   }
 });
+
+app.use(helmet());
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || 'http://localhost:3000',
+  methods: ['GET', 'POST']
+}));
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB bağlantısı başarılı'))

@@ -40,4 +40,13 @@ export const debug = (message, ...args) => {
   if (process.env.NODE_ENV !== 'production') {
     console.log(`[DEBUG] ${message}`, ...args);
   }
+};
+
+export const sanitizeInput = (input) => {
+  return input
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }; 
